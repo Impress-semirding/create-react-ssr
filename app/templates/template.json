@@ -1,4 +1,9 @@
 {
+  "name": "<%= appName %>",
+  "version": "<%= version %>",
+  "scripts": {
+    "start": "react-scripts start"
+  },
   "package": {
     "dependencies": {
       "@testing-library/jest-dom": "^5.14.1",

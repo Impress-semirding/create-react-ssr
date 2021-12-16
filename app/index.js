@@ -36,7 +36,7 @@ module.exports = class extends Generators {
 
     console.log('glob files', files)
     const tplList = {
-      '_package.json': 'package.json',
+      'template.json': 'package.json',
     }
 
     
