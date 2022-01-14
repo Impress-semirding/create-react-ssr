@@ -1,13 +1,19 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
+import "./index.css";
+import App from "./App";
 
-  return (
-    <div>
-      app container
-    </div>
-  );
+if (module.hot) {
+  module.hot.accept();
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
+);

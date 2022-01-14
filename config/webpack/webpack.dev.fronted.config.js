@@ -5,7 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: path.resolve(__dirname, '../../client/index.js'),
+    index: [
+      // 'react-hot-loader/patch',
+      path.resolve(__dirname, '../../client/index.js')
+    ],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -14,6 +17,7 @@ module.exports = {
   devServer: {
     compress: true,
     port: 9000,
+    hot: true,
     historyApiFallback: true
   },
   resolve: {
@@ -31,14 +35,18 @@ module.exports = {
         loader: 'babel-loader',
       }],
     },
+    {
+      test: /\.css$/i,
+      use: ["style-loader", "css-loader"],
+    },
     ],
   },
   plugins: [
-    // new webpack.ProgressPlugin(handler),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+      NODE_ENV: 'development',
       DEBUG: false,
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: '香港身份证识别',
       template: path.resolve(__dirname, '../../client/template/index.html'),

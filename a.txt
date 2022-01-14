@@ -1,6 +1,0 @@
-
-> generator-react-app@0.1.0 client:dev
-> NODE_ENV=development node ./config/script/build.fonted.js
-
-Starting server...
-1111
