@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "svr:dev": "NODE_ENV=development node ./config/script/start.js",
+    "svr:watch": "NODE_ENV=development node ./config/script/build.server.js",
+    "svr:webpack": "NODE_ENV=development webpack --config ./config/webpack/webpack.dev.server.config.js",
+    "client:dev": "NODE_ENV=development node ./config/script/build.fonted.js"
   },
   "files": [
     "generators"
@@ -15,7 +18,42 @@
   "author": "steven_dingx",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
+    "@loadable/webpack-plugin": "^5.15.2",
+    "axios": "^0.24.0",
+    "babel-loader": "^8.2.3",
+    "bluebird": "^3.7.2",
+    "chalk": "^3.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-cookie": "^1.0.0",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
+    "koa2-proxy-middleware": "^0.0.4",
+    "less-loader": "^10.2.0",
+    "mini-css-extract-plugin": "^2.4.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-router": "^6.2.1",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^6.2.1",
+    "url-loader": "^4.1.1",
+    "uuid": "^8.3.2",
+    "webpack": "^5.66.0",
+    "webpack-node-externals": "^3.0.0",
+    "webpackbar": "^5.0.2",
     "yeoman-environment": "^3.8.1",
     "yeoman-generator": "^5.4.2"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0",
+    "ts-loader": "^9.2.6",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
   }
 }

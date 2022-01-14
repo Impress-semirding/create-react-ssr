@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="Cache-Control" content="max-age=7200" />
+ <meta http-equiv="Expires" content="Mon, 20 Jul 2013 23:00:00 GMT" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style type="text/css">
+    :-webkit-direct-focus {
+  border: 0 !important;
+  outline: none !important;
+}
+    </style>
+  <link rel="shortcut icon" href="https://zh-hans.reactjs.org/favicon-32x32.png?v=f4d46f030265b4c48a05c999b8d93791" />
+  <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+  <script>
+    (function () {
+      function setFont() {
+        const base = document.documentElement.clientWidth / 750;
+        document.documentElement.style.fontSize = `${base * 100}px`;
+        window.baseFontSize = base * 100;
+      }
+      document.addEventListener('DOMContentLoaded', setFont);
+      document.addEventListener('resize', setFont);
+    })()
+  </script>
+  <script src="/js/glfx.js"></script>
+  <!-- <script src="/js/webgl-distort.js"></script> -->
+
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
