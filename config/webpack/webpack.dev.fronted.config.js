@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoadablePlugin = require("@loadable/webpack-plugin");
 
 module.exports = {
   mode: 'development',
@@ -45,6 +46,7 @@ module.exports = {
       NODE_ENV: 'development',
       DEBUG: false,
     }),
+    new LoadablePlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: '香港身份证识别',

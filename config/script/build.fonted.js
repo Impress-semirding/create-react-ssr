@@ -1,8 +1,8 @@
-const Webpack = require('webpack');
 const chalk = require('chalk');
+const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('../webpack/webpack.dev.fronted.config');
 const { SVRBUILDCOMPLETE, FRONTEDCOMPLIRE } = require('./constant');
+const webpackConfig = require('../webpack/webpack.dev.fronted.config');
 
 const compiler = Webpack(webpackConfig);
 const devServerOptions = { ...webpackConfig.devServer, open: true };
@@ -15,5 +15,3 @@ const runServer = async () => {
 };
 
 runServer();
-
-console.log(1111)

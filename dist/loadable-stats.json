@@ -1,5 +1,5 @@
 {
-  "hash": "a989852e9f45f5bdc265",
+  "hash": "858d4df6687e35164967",
   "publicPath": "",
   "outputPath": "/Users/dingxue/codes/create-react-ssr/dist",
   "assetsByChunkName": {
@@ -11,7 +11,7 @@
     {
       "type": "asset",
       "name": "main.js",
-      "size": 8370,
+      "size": 29136,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
@@ -26,6 +26,44 @@
       "auxiliaryChunkIdHints": [],
       "chunks": [
         "main"
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "pages_Dashboard_js.js",
+      "size": 5627,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "javascriptModule": false
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        "pages_Dashboard_js"
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "pages_About_js.js",
+      "size": 2688,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "javascriptModule": false
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        "pages_About_js"
       ],
       "auxiliaryChunks": []
     }
@@ -55,6 +93,18 @@
       "id": "main",
       "files": [
         "main.js"
+      ]
+    },
+    {
+      "id": "pages_About_js",
+      "files": [
+        "pages_About_js.js"
+      ]
+    },
+    {
+      "id": "pages_Dashboard_js",
+      "files": [
+        "pages_Dashboard_js.js"
       ]
     }
   ]
