@@ -1,12 +1,27 @@
 const path = require('path');
 const process = require('process');
 const { spawn } = require('child_process');
-const { SVRBUILDCOMPLETE, FRONTEDCOMPLIRE } = require('./constant');
+const { PREPARECOMPLETE, SVRBUILDCOMPLETE, FRONTEDCOMPLIRE } = require('./constant');
 
 const root = process.cwd();
-const buildFrontedProcess = spawn('npm', ['run', 'client:dev'], { shell: process.platform === 'win32'});
+let buildFrontedProcess = null;
+const prepareProcess = spawn('node', [path.resolve(root, './config/script/prepare')], { shell: process.platform === 'win32' });
 const buildServerProcess = spawn('npm', ['run', 'svr:watch'], { shell: process.platform === 'win32' });
 const runServerProcess = () => spawn('node', [path.resolve(root, './dist/main')], { stdio: 'inherit', shell: process.platform === 'win32' });
+
+let frontedReady = false;
+prepareProcess.stdout.on('data', data => {
+  const str = data.toString();
+  if (str.includes(PREPARECOMPLETE)) {
+    buildFrontedProcess = spawn('npm', ['run', 'client:dev'], { shell: process.platform === 'win32' });
+    buildFrontedProcess.stdout.on('data', (data) => {
+      if (data.toString().includes(FRONTEDCOMPLIRE)) {
+        frontedReady = true;
+      }
+    })
+  }
+})
+
 buildServerProcess.stdout.on('data', data => {
   const str = data.toString();
   if (str.includes(SVRBUILDCOMPLETE)) {
@@ -16,12 +31,6 @@ buildServerProcess.stdout.on('data', data => {
   }
 })
 
-let frontedReady = false;
-buildFrontedProcess.stdout.on('data', (data) => {
-  if (data.toString().includes(FRONTEDCOMPLIRE)) {
-    frontedReady = true;
-  }
-})
 
 let serverProcess = null;
 function runServer() {

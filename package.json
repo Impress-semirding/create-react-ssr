@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "svr:dev": "NODE_ENV=development node ./config/script/start.js",
+    "dev": "NODE_ENV=development node ./config/script/start.js",
     "svr:watch": "NODE_ENV=development node ./config/script/build.server.js",
     "svr:webpack": "NODE_ENV=development webpack --config ./config/webpack/webpack.dev.server.config.js",
-    "client:dev": "NODE_ENV=development node ./config/script/build.fonted.js"
+    "client:dev": "NODE_ENV=development node ./config/script/build.fonted.js",
+    "prepare": "NODE_ENV=development node ./config/script/prepare"
   },
   "files": [
     "generators"
@@ -28,6 +29,8 @@
     "chalk": "^3.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
+    "ejs": "^3.1.6",
+    "glob": "^7.2.0",
     "html-webpack-plugin": "^5.5.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",

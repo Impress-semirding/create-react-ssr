@@ -6,8 +6,7 @@ module.exports = {
   mode: 'development',
   entry: {
     index: [
-      // 'react-hot-loader/patch',
-      path.resolve(__dirname, '../../client/index.js')
+      path.resolve(__dirname, '../../template/index.js')
     ],
   },
   output: {
@@ -49,7 +48,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: '香港身份证识别',
-      template: path.resolve(__dirname, '../../client/template/index.html'),
+      template: path.resolve(__dirname, '../../template/html/index.html'),
       chunks: ['index'],
     })
   ]
