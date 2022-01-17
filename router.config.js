@@ -3,10 +3,10 @@ import loadable from '@loadable/component'
 import { Switch, Route, Link } from "react-router-dom";
 
 const About = loadable(() => import("./pages/About"), {
-  fallback: <div>Loading...</div>,
+  ssr: true
 });
 const Dashboard = loadable(() => import("./pages/Dashboard"), {
-  fallback: <div>Loading...</div>,
+  ssr: true,
 });
 
 export default function App() {
