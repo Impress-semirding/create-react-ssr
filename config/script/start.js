@@ -40,7 +40,6 @@ const runServerProcess = () =>
     'node',
     [path.resolve(root, './dist/main')],
     {
-      stdio: 'inherit',
       shell: process.platform === 'win32'
     }
   );
@@ -55,6 +54,9 @@ function runServer() {
     serverProcess.kill();
   }
   serverProcess = runServerProcess();
+  serverProcess.stdout.on('data', msg => {
+    console.log('serverProcess', msg.toString());
+  })
 }
 
 const killAllProcess = () => {

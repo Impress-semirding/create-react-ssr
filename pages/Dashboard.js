@@ -1,16 +1,16 @@
 import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 export default function Dashboard() {
   // These routes are defined when this component is loaded on demand via
   // dynamic import() on the home page!
   return (
-    <Routes>
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<DashboardIndex />} />
-        <Route path="messages" element={<Messages />} />
+    <Switch>
+      <Route path="/" component={<DashboardLayout />}>
+        <Route index component={<DashboardIndex />} />
+        <Route path="messages" component={<Messages />} />
       </Route>
-    </Routes>
+    </Switch>
   );
 }
 

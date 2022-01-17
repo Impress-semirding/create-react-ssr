@@ -1,4 +1,5 @@
 const catchError = async (ctx, next) => {
+  console.log(ctx.url);
   try {
     await next();
   } catch (err) {

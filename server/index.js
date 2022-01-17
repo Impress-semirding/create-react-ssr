@@ -14,11 +14,11 @@ import path, { resolve } from 'path';
 
 let extractor = null;
 async function createExtractor() {
-  const { body } = await request('http://localhost:9000/loadable-stats.json');
+  const { body } = await request('http://localhost:9000/static/loadable-stats.json');
   fs.writeFileSync(path.resolve(__dirname, '../loadable-client-stats.json'), JSON.stringify(body));
   extractor = new ChunkExtractor({
     statsFile: path.resolve(__dirname, '../loadable-client-stats.json'),
-    // entrypoints: ['index']
+    entrypoints: ['index']
   });
   resolve()
 }
@@ -34,17 +34,7 @@ createExtractor()
           changeOrigin: true,
           proxyTimeout: timeout,
         },
-        '/': {
-          target: 'http://localhost:9000',
-          changeOrigin: true,
-          proxyTimeout: timeout,
-        },
-        '/**/*.js': {
-          target: 'http://localhost:9000',
-          changeOrigin: true,
-          proxyTimeout: timeout,
-        },
-        '/**/*.css': {
+        '/static/(.*)': {
           target: 'http://localhost:9000',
           changeOrigin: true,
           proxyTimeout: timeout,

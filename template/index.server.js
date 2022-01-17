@@ -4,33 +4,33 @@ import React from "react";
 import { StaticRouter } from 'react-router';
 import { renderToString } from 'react-dom/server';
 
-import App from "/Users/dingxue/codes/create-react-ssr/router.config.js";
+import App from "/Users/dingxue/Downloads/github/my-cli/my-react-template/router.config.js";
 
-const template = fs.readFileSync(path.resolve(__dirname, '../template/html/index.html'));
+const template = fs.readFileSync(path.resolve(__dirname, '../template/html/index.html'), 'utf-8');
 
 const context = {};
 
 function ssrRender(extractor) {
-  return (ctx, next) => {
-    if (['/', '/about', '/dashboard/messages'].includes(ctx.url)) {
+  return async (ctx, next) => {
+    if (['/','/about', '/dashboard/messages'].includes(ctx.url)) {
       const jsx = extractor.collectChunks(
         <StaticRouter location={ctx.url}>
           <App></App>
         </StaticRouter>
       )
-
-      console.log('jsx', jsx, JSON.stringify(jsx))
+      
       const html = renderToString(jsx);
-      ctx.body = 1;
-
-      // console.log('html', html)
-
-      // ctx.status = 200;
-      // ctx.set('Content-Type', 'text/html');
-      // ctx.body = template.replace('<!-- style -->', extractor.getStyleTags())
-      //   .replace('<!-- content -->', html)
-      //   .replace('<!-- script -->', extractor.getScriptTags());
-    }
+      ctx.status = 200;
+      console.log(extractor.getScriptTags());
+      ctx.set('Content-Type', 'text/html');
+      console.log(template.replace('<!-- style -->', extractor.getStyleTags())
+      .replace('<!-- content -->', html)
+      .replace('<!-- script -->', extractor.getScriptTags()))
+      ctx.body = template.replace('<!-- style -->', extractor.getStyleTags())
+      .replace('<!-- content -->', html)
+      .replace('<!-- script -->', extractor.getScriptTags());
+    } 
+    await next();
   }
 }
 

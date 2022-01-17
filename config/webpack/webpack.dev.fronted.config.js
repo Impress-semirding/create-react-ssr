@@ -12,13 +12,17 @@ module.exports = {
   },
   output: {
     filename: 'js/[name].bundle.js',
-    publicPath: '/',
+    publicPath: '/static/',
   },
   devServer: {
     compress: true,
     port: 9000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/*/, to: '/static/index.html' }
+      ],
+    }
   },
   resolve: {
     // alias: {
@@ -54,4 +58,4 @@ module.exports = {
       chunks: ['index'],
     })
   ]
-};
+}

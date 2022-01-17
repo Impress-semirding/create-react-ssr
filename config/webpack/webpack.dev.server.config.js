@@ -3,7 +3,6 @@ const webpack = require("webpack");
 const WebpackBar = require("webpackbar");
 const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const LoadablePlugin = require('@loadable/webpack-plugin')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { entry, outputPath } = require('./config');
@@ -109,7 +108,6 @@ module.exports = {
     },
   },
   plugins: [
-    new LoadablePlugin(),
     new MiniCssExtractPlugin({
       filename: "./assets/[name].[hash].css",
       chunkFilename: "./assets/[id].[hash].css",

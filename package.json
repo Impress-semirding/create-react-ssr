@@ -45,9 +45,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
-    "react-router": "^6.2.1",
+    "react-router": "^5.2.1",
     "react-router-config": "^5.1.1",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^5.3.0",
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
     "uuid": "^8.3.2",
@@ -58,6 +58,8 @@
     "yeoman-generator": "^5.4.2"
   },
   "devDependencies": {
+    "@loadable/babel-plugin": "^5.13.2",
+    "@types/react-router-dom": "^5.3.2",
     "file-loader": "^6.2.0",
     "ts-loader": "^9.2.6",
     "webpack-cli": "^4.9.1",

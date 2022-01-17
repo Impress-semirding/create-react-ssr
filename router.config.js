@@ -1,6 +1,6 @@
 import * as React from "react";
 import loadable from '@loadable/component'
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 const About = loadable(() => import("./pages/About"), {
   fallback: <div>Loading...</div>,
@@ -11,24 +11,20 @@ const Dashboard = loadable(() => import("./pages/Dashboard"), {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route
-          path="about"
-          element={
-            <About />
-          }
-        />
-        <Route
-          path="dashboard/*"
-          element={
-            <Dashboard />
-          }
-        />
-        <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
+    <div>
+      <Layout></Layout>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
@@ -51,7 +47,6 @@ function Layout() {
 
       <hr />
 
-      <Outlet />
     </div>
   );
 }
